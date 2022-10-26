@@ -11,8 +11,8 @@ pipeline {
             steps {
                 echo 'Pulling... ';
                     git branch: 'khaled',
-                        url : 'https://github.com/louatisahar/DevOps';
-                        //  credentialsId: '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';
+                        url : 'https://github.com/louatisahar/DevOps',
+                        credentialsId: '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';
             }
         }
         stage('Testing maven') {
