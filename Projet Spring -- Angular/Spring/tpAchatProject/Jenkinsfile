@@ -1,10 +1,26 @@
-pipeline{
-	agent any
-	stages {
-		stage('hello'){
-			steps {
-				echo 'hello world'
-				}
-			}
-		}
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Checkout GIT') {
+            steps {
+                echo 'Pulling... ';
+                    git branch: 'sahar',
+                        url : 'https://github.com/louatisahar/DevOps',
+                        credentialsId: '2e6b98c3-3aea-4dc4-a4b4-634db5d77f6c';
+            }
+        }
+        stage('Testing maven') {
+            steps {
+                sh """mvn -v"""
+            }
+        }
+       
+       
+    }
 }
