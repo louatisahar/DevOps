@@ -20,6 +20,11 @@ pipeline {
                 sh """mvn -v"""
             }
         }
+        stage('maven clean') {
+            steps {
+                sh """mvn clean"""
+            }
+        }
         
         
     }
