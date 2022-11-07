@@ -22,6 +22,7 @@ pipeline {
         }
         stage('MVN CLEAN') {
             steps {
+            echo 'test clean'
                 sh """mvn clean"""
             }
         }
