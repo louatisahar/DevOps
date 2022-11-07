@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling... ';
@@ -61,11 +56,4 @@ pipeline {
                
             }
         }
-     stage ('TEST') {
-             steps {
-            sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
-        }
-        }
-        }
-
     }
