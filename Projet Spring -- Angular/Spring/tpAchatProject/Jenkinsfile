@@ -12,7 +12,7 @@ pipeline {
                 echo 'Pulling... ';
                     git branch: 'Ahmed',
                         url : 'https://github.com/louatisahar/DevOps',
-                        credentialsId: '08c643de-905d-45a9-9d2f-3f709ad04201';
+                        credentialsId: '1c7c158a-e21c-475f-b796-0f3e1fa63064';
             }
         }
         stage('Testing maven') {
