@@ -35,7 +35,11 @@ pipeline {
         }
        
              
-             
+           stage ('Nexus') {
+             steps {
+            sh 'mvn deploy'
+        }
+        }  
         stage('Code Quality Check via SonarQube') {
              
              
@@ -49,11 +53,7 @@ pipeline {
             }
         }
      
-        stage ('Nexus') {
-             steps {
-            sh 'mvn deploy'
-        }
-        }
+        
         }
 
     }
