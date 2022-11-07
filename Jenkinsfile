@@ -48,6 +48,19 @@ pipeline {
                
             }
         }
+        
+                stage('Nexus') {
+             
+             
+            steps {
+               
+                script {
+
+                        sh 'mvn deploy'
+}
+               
+            }
+        }
      stage ('TEST') {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
