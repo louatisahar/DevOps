@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Pulling... ';
                     git branch: 'khaled',
-                        url : 'https://github.com/louatisahar/DevOps',
+                        url : 'https://github.com/louatisahar/DevOps/tree/main/Projet%20Spring%20--%20Angular/Spring/tpAchatProject',
                         credentialsId: '14d06552-df58-407d-bd31-71164c94aae9';
             }
         }
