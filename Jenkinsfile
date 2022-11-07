@@ -10,9 +10,9 @@ pipeline {
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling... ';
-                    git branch: 'khaled',
+                    git branch: 'Ahmed',
                         url : 'https://github.com/louatisahar/DevOps',
-                        credentialsId: '14d06552-df58-407d-bd31-71164c94aae9';
+                        credentialsId: 'Ahmed_Personal_Git_Repo_Private';
             }
         }
 
@@ -43,7 +43,7 @@ pipeline {
                
                 script {
 
-                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin.'
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=ahmed'
 }
                
             }
