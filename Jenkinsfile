@@ -53,7 +53,7 @@ pipeline {
         
         stage ('TEST') {
              steps {
-            sh 'mvn test -Dtest=’’SecteurActiviteServiceImplMock’’ ‘
+            sh 'mvn test -Dtest=’’SecteurActiviteServiceImplMock’’ '
         }
         }
         
