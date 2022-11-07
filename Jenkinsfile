@@ -43,8 +43,7 @@ pipeline {
                
                 script {
 
-                        sh  'mvn sonar:sonar'
- 
+                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin.'
 }
                
             }
