@@ -43,8 +43,7 @@ pipeline {
                
                 script {
 
-                        sh  'mvn sonar:sonar -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://172.10.0.140:9000/ -Dsonar.login=admin   -Dsonar.password=admina'
-
+                        sh  'mvn sonar:sonar'
  
 }
                
