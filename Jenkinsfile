@@ -38,22 +38,16 @@ pipeline {
            stage ('Nexus') {
              steps {
             sh 'mvn deploy'
-        }
+        	}
         }  
         stage('Code Quality Check via SonarQube') {
-             
-             
             steps {
-               
                 script {
-
                         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin.'
-}
+						}
                
             }
         }
      
-        
-        }
-
     }
+}
