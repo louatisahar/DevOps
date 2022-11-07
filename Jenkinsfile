@@ -10,9 +10,9 @@ pipeline {
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling... ';
-                    git branch: 'khaled',
+                    git branch: 'sahar',
                         url : 'https://github.com/louatisahar/DevOps',
-                        credentialsId: '14d06552-df58-407d-bd31-71164c94aae9';
+                        credentialsId: 'd6ff7a98-2a40-49d0-b15b-408198b39b88';
             }
         }
 
