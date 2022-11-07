@@ -53,6 +53,11 @@ pipeline {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
         }
         }
+        stage ('Nexus') {
+             steps {
+            sh 'mvn deploy'
+        }
+        }
         }
 
     }
