@@ -33,11 +33,7 @@ pipeline {
              
              
             steps {
-               
-                script {
-
-                        sh 'mvn deploy'
-				}		
+                                       sh 'mvn deploy'
                
             }
         }             
@@ -55,6 +51,4 @@ pipeline {
             }
         }
         
-
-    
     }
