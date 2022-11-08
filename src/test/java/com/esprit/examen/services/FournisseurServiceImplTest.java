@@ -17,7 +17,7 @@ import com.esprit.examen.entities.Fournisseur;
 
 
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
 class FournisseurServiceImplTest {
 	@Autowired
