@@ -47,4 +47,12 @@ pipeline {
         }
         
       }
+      
+      stage ('Junit test') {
+             steps {
+            sh 'mvn test -Dtest="FournisseurServiceImplTest" '
+            }
+        }
+        
+      }
 }
