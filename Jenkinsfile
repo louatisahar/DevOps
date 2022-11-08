@@ -43,16 +43,17 @@ pipeline {
         stage ('Mockito test') {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
+            sh 'mvn test -Dtest="FournisseurServiceImplTest" '
             }
         }
         
       
       
-      stage ('Junit test') {
+     /* stage ('Junit test') {
              steps {
-            sh 'mvn test -Dtest="FournisseurServiceImplTest" '
+            
             }
-        }
+        }*/
         
       }
 }
