@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
+       
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling... ';
