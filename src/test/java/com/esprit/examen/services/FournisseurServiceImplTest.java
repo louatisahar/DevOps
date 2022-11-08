@@ -1,5 +1,105 @@
 package com.esprit.examen.services;
 
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.times;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.esprit.examen.entities.CategorieFournisseur;
+import com.esprit.examen.entities.Fournisseur;
+import com.esprit.examen.entities.SecteurActivite;
+import com.esprit.examen.repositories.FournisseurRepository;
+import com.esprit.examen.repositories.SecteurActiviteRepository;
+
+@ExtendWith(MockitoExtension.class)
+
+class FournisseurServiceImplTest {
+
+	@Mock
+	FournisseurRepository fournisseurRepository;
+	@InjectMocks
+	IFournisseurService fournisseurService;
+	//on a initialiser un objet sa pour tester avec
+	Fournisseur f = new Fournisseur((long)2,"Code 2 ajout","Libelle 2 ajout", CategorieFournisseur.CONVENTIONNE,null,null,null);
+	List<Fournisseur> fournisseurInit = new ArrayList<Fournisseur>() {
+		{
+		add (new Fournisseur((long)3,"Code 3 ajout","Libelle 3 ajout", CategorieFournisseur.CONVENTIONNE,null,null,null));
+		add (new Fournisseur((long)4,"Code 4 ajout","Libelle 4 ajout", CategorieFournisseur.CONVENTIONNE,null,null,null));
+		add (new Fournisseur((long)5,"Code 5 ajout","Libelle 5 ajout", CategorieFournisseur.CONVENTIONNE,null,null,null));
+
+		
+		}
+	};
+	
+	
+	@Test
+	void testRetrieveAllSecteurActivite() {
+
+		
+		Mockito.doReturn(fournisseurInit).when(fournisseurRepository).findAll();
+        List<Fournisseur> fournisseur = fournisseurService.retrieveAllFournisseurs();
+		Assertions.assertNotNull(fournisseur);	
+
+
+		
+	}	
+
+	@Test
+	void testAddSecteurActivite() {
+		
+		Fournisseur f = new Fournisseur();
+		Mockito.when(fournisseurRepository.save(Mockito.any(Fournisseur.class))).thenReturn(f);
+		Fournisseur fou=fournisseurService.addFournisseur(f);
+		Assertions.assertNotNull(fou);	
+	}
+	
+	@Test
+	void testDeleteSecteurActivite() {
+
+		fournisseurService.deleteFournisseur((long)2);
+		Mockito.verify(fournisseurRepository).deleteById((long)2);
+
+		
+	}
+	
+
+	@Test
+	void testUpdateSecteurActivite() {
+		
+		
+		Mockito.when(fournisseurRepository.save(Mockito.any(Fournisseur.class))).thenReturn(f);
+		f.setLibelle("fournisseur");
+		Fournisseur fou=fournisseurService.updateFournisseur(f);
+		assertNotNull(fou);
+		assertEquals("activite", f.getLibelle());
+
+	}
+
+	@Test
+	void testRetrieveSecteurActivite() {
+		
+		Mockito.when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(f));
+		Fournisseur saa = fournisseurService.retrieveFournisseur((long)2);
+		Assertions.assertNotNull(saa);	
+		}
+
+}
+
+
+/*
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -14,8 +114,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.CategorieFournisseur;
 import com.esprit.examen.entities.Fournisseur;
-
-
 
 
 @SpringBootTest
@@ -54,7 +152,7 @@ class FournisseurServiceImplTest {
 		fournisseurService.deleteFournisseur(savedFournisseur.getIdFournisseur());
 		assertNull(fournisseurService.retrieveFournisseur(savedFournisseur.getIdFournisseur()));
 	}
-*/
+
 	
 	@Test
 	 public void testRetrieveFournisseur() {
@@ -64,3 +162,4 @@ class FournisseurServiceImplTest {
 	    }
 	
 }
+*/
