@@ -11,51 +11,40 @@ pipeline {
             }
         }
 
-        stage('Cleaning the project') {
-             
-             
+        stage('Cleaning the project') {     
             steps {
                 echo 'cleaning project ...'
                 sh 'mvn clean'
             }
         }
         
-        stage('Compiling the artifact') {
-             
+        stage('Compiling the artifact') {             
             steps {
                 echo "compiling"
                 sh 'mvn compile'
-               
             }
         }
        
                 stage('Nexus') {
-             
-             
             steps {
                 sh 'mvn deploy'
-               
             }
         }             
              
         stage('Code Quality Check via SonarQube') {
-             
-             
             steps {
-               
                 script {
-
-                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin.'
-}
+                       sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin.'
+                }
                
             }
         }
         
-        stage ('TEST1') {
+        stage ('Mockito test') {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
-        }
+            }
         }
         
-    }
-    }
+      }
+}
