@@ -31,7 +31,7 @@ class FournisseurServiceImplTest {
 	@Mock
 	FournisseurRepository fournisseurRepository;
 	@InjectMocks
-	IFournisseurService fournisseurService;
+	FournisseurServiceImpl fournisseurService;
 	//on a initialiser un objet sa pour tester avec
 	Fournisseur f = new Fournisseur((long)2,"Code 2 ajout","Libelle 2 ajout", CategorieFournisseur.CONVENTIONNE,null,null,null);
 	List<Fournisseur> fournisseurInit = new ArrayList<Fournisseur>() {
