@@ -40,20 +40,13 @@ pipeline {
             }
         }
         
-        stage ('Mockito test') {
+        stage ('Mockito/Junit') {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
             }
         }
         
-      
-      
-     /* stage ('Junit test') {
-             steps {
-            
-            }
-        }*/
-        
+     
       }
 }
