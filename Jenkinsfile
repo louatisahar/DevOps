@@ -51,17 +51,19 @@ pipeline {
             }
         }
         
+         stage ('Docker login'){
+        	steps {
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS USR --password-stdin'
+        	}
+        }
+        
          stage ('Docker build') {
              steps {
             sh 'sudo docker build -t khaledkhm/achatback:latest .'
             }
         }
         
-        stage ('Docker login'){
-        	steps {
-        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS USR --password-stdin'
-        	}
-        }
+       
         
         stage ('Docker push'){
         	steps {
