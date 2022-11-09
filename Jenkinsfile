@@ -34,11 +34,10 @@ pipeline {
              
              
             steps {
-               
                 script {
 
                         sh 'mvn deploy'
-}
+				}
                
             }
         } 
@@ -56,11 +55,11 @@ pipeline {
             }
         }
        
-     stage ('TEST') {
-             steps {
-            sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
-        	}
-        }
+	     stage ('TEST') {
+	             steps {
+	            sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
+	        	}
+	        }
         }
 
     }
