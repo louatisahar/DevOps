@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    environment {
+    		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    		}
 
     stages {
         stage('Checkout GIT') {
@@ -47,12 +51,30 @@ pipeline {
             }
         }
         
-         stage ('Docker') {
+         stage ('Docker build') {
              steps {
-            sh 'node --versuib '
+            sh 'docker build -t khaledkhm/achatback:latest .'
             }
         }
         
+        stage ('Docker login'){
+        	steps {
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS USR --password-stdin'
+        	}
+        }
+        
+        stage ('Docker push'){
+        	steps {
+        	sh 'docker push khaledkhm/achatback:latest'
+        	}
+        }
+        
      
+      }
+      
+      post {
+      	always {
+      		sh 'docker logout'
+      	}
       }
 }
