@@ -53,7 +53,7 @@ pipeline {
         
          stage ('Docker build') {
              steps {
-            sh 'sudo docker build -t khaledkhm/achatback:latest .'
+            sh 'docker build -t khaledkhm/achatback:latest .'
             }
         }
    
@@ -69,7 +69,7 @@ pipeline {
         
         stage ('Docker push'){
         	steps {
-        	sh 'sudo docker push khaledkhm/achatback:latest'
+        	sh 'docker push khaledkhm/achatback:latest'
         	}
         }
         
@@ -78,7 +78,7 @@ pipeline {
       
       post {
       	always {
-      		sh 'sudo docker logout'
+      		sh 'docker logout'
       	}
       }
 }
