@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+    	docker { image 'node:16.13.1-alpine' }
+    }
 
     stages {
         stage('Checkout GIT') {
@@ -44,6 +46,12 @@ pipeline {
              steps {
             sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
             sh 'mvn test -Dtest="FournisseurServiceImplTest" '
+            }
+        }
+        
+         stage ('Docker') {
+             steps {
+            sh 'node --versuib '
             }
         }
         
