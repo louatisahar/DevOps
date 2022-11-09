@@ -16,9 +16,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.esprit.examen.entities.CategorieFournisseur;
+import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
+import com.esprit.examen.entities.SecteurActivite;
+import com.esprit.examen.repositories.DetailFournisseurRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
 
 
@@ -28,6 +32,8 @@ class FournisseurServiceImplTest {
 
 	@Mock
 	FournisseurRepository fournisseurRepository;
+	@Mock
+	DetailFournisseurRepository detailFournisseurRepository;
 	@InjectMocks
 	FournisseurServiceImpl fournisseurService;
 	//on a initialiser un objet sa pour tester avec
@@ -73,17 +79,16 @@ class FournisseurServiceImplTest {
 	}
 	
 
-	/*@Test
+	@Test
 	void testUpdateFournisseur() {
-		
-		
+		DetailFournisseur df = new DetailFournisseur();
 		Mockito.when(fournisseurRepository.save(Mockito.any(Fournisseur.class))).thenReturn(f);
-		f.setLibelle("Libelle 3 updated");
-		Fournisseur fou=fournisseurService.updateFournisseur(f);
-		assertNotNull(fou);
-		assertEquals("Libelle 3 updated", f.getLibelle());
+		f.setDetailFournisseur(df);
+		Fournisseur sec=fournisseurService.updateFournisseur(f);
+		assertNotNull(sec);
+		assertEquals("fournisseur", f.getLibelle());
 
-	}*/
+	}
 
 	@Test
 	void testRetrieveFournisseur() {
