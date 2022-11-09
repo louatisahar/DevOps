@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Checkout GIT') {
+            steps {
+                echo 'Pulling... ';
+                    git branch: 'Ahmed',
+                        url : 'https://github.com/louatisahar/DevOps',
+                        credentialsId: '1c7c158a-e21c-475f-b796-0f3e1fa63064';
+            }
+        }
+        stage('Testing maven') {
+            steps {
+                sh """mvn -v"""
+            }
+        }
+        stage('maven clean') {
+            steps {
+                sh """mvn clean"""
+            }
+        }
+        
+        
+    }
+}
