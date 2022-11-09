@@ -79,7 +79,7 @@ class FournisseurServiceImplTest {
 	}
 	
 
-	@Test
+	/*@Test
 	void testUpdateFournisseur() {
 		DetailFournisseur df = new DetailFournisseur();
 		Mockito.when(fournisseurRepository.save(Mockito.any(Fournisseur.class))).thenReturn(f);
@@ -89,7 +89,7 @@ class FournisseurServiceImplTest {
 		assertEquals("fournisseur", f.getLibelle());
 
 	}
-
+*/
 	@Test
 	void testRetrieveFournisseur() {
 		
