@@ -64,7 +64,11 @@ pipeline {
 		            Best Regards''', cc: '', from: '', replyTo: '', subject: 'Devops Pipeline', to: 'bannour.ahmed@esprit.tn'
 	            }
 	       }
-	       
+	    stage('Run app With DockerCompose') {
+              steps {
+                  sh "docker-compose -f docker-compose.yml up -d  "
+              }
+        }
 	    stage ('TEST') {
 	             steps {
 	            sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
