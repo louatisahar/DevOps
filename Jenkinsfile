@@ -43,8 +43,7 @@ pipeline {
         }     
      stage ('Mockito/Junit') {
              steps {
-            sh 'mvn test -Dtest="FactureServiceImplMock" '
-            sh 'mvn test -Dtest="ReglementServiceImpTest" '
+            sh 'mvn test -Dtest="FactureServiceImplMockito" '
             }
         }
     }
