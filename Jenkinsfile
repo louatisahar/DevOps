@@ -41,6 +41,10 @@ pipeline {
                 sh 'mvn deploy'
             }
         }     
-     
+     stage ('Mockito/Junit') {
+             steps {
+            sh 'mvn test -Dtest="FactureServiceImplMock" '
+            }
+        }
     }
 }
