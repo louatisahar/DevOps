@@ -67,7 +67,7 @@ pipeline {
 	   stage('Docker build')
         {
             steps {
-                 sh 'docker build --build-arg IP=0.0.0.0 -t louatisahar/devops  .'
+                 sh 'docker build --build-arg IP=0.0.0.0 -t louatisahar/DevOps  .'
             }
         }
         stage('Docker login')
