@@ -10,4 +10,4 @@ volumes:
   nexus-data:
   SonarQube_data:
   SonarQube_extensions:
-  SonarQube_logs:
+ 
