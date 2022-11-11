@@ -56,11 +56,7 @@ pipeline {
         }
        
 	     
-	     stage('Run app With DockerCompose') {
-              steps {
-                  sh "docker-compose -f docker-compose.yml up -d  "
-              }
-        }
+	   
         stage('Sending email'){
 	           steps {
 		            mail bcc: '', body: '''Hello from Jenkins,
