@@ -23,15 +23,15 @@ public class FactureServiceImplMock {
 	@InjectMocks
 	FactureServiceImpl factureServiceImpl;
 	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	Date datefact = dateFormat.parse("30/09/2000");
+	//Date datefact = dateFormat.parse("30/09/2000");
 	//initializer des objet
-	Facture facture=new Facture (12.36,10.33,datefact,datefact,false,1);
+	Facture facture=new Facture ((long)1,(float)12.36,(float)10.33,null,null,false);
 	List<Facture> f = new ArrayList<Facture>() {
 		
 		{
-			add(new Facture(12.36,10.33,datefact,datefact,false,1));
-			add(new Facture(12.36,10.33,datefact,datefact,false,1));
-			add(new Facture(12.36,10.33,datefact,datefact,false,1));
+			add(new Facture((long)1,(float)12.36,(float)10.33,null,null,false));
+			add(new Facture((long)1,(float)12.36,(float)10.33,null,null,false));
+			add(new Facture((long)1,(float)12.36,(float)10.33,null,null,false));
 		}
 	};
 
