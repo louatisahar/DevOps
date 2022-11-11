@@ -73,7 +73,7 @@ pipeline {
         stage('Docker login')
         {
             steps {
-                sh 'docker login -u ahmedbannour -p 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.'
+                sh 'echo $dockerhub_PSW | docker login -u ahmedbannour -p La9lou954414701.'
             }    
        
         }
