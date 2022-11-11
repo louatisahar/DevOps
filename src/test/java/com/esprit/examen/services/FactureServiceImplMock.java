@@ -1,5 +1,6 @@
 package com.esprit.examen.services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,13 +22,16 @@ public class FactureServiceImplMock {
 	FactureRepository factureRepository;
 	@InjectMocks
 	FactureServiceImpl factureServiceImpl;
-	
+	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	Date datefact = dateFormat.parse("30/09/2000");
 	//initializer des objet
-	//Facture facture=new Facture (1,12.36,10.33,Date(2022-11-08),"2022-11-08",false,1);
+	Facture facture=new Facture (12.36,10.33,datefact,datefact,false,1);
 	List<Facture> f = new ArrayList<Facture>() {
 		
 		{
-			add(new Facture());
+			add(new Facture(12.36,10.33,datefact,datefact,false,1));
+			add(new Facture(12.36,10.33,datefact,datefact,false,1));
+			add(new Facture(12.36,10.33,datefact,datefact,false,1));
 		}
 	};
 
@@ -56,10 +60,11 @@ public class FactureServiceImplMock {
 	return fact ;
 	}
 	
-	@Test
+	/*@Test
 	void cancelFacture(Long id) {
+	//	Mockito.doReturn(id)
 		
-	}
+	}*/
 	@Test
 	Facture retrieveFacture(Long id) {
 		Mockito.doReturn(f).when(factureRepository).findAll();
@@ -67,13 +72,13 @@ public class FactureServiceImplMock {
 		Assertions.assertNotNull(fact);
 		return fact;
 	}
-	@Test
+	/*@Test
 	void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture f=new Facture();
 		Mockito.doReturn(f).when(factureRepository).findAll();
 		Mockito.when(factureRepository.save(Mockito.any(Facture.class))).thenReturn(f);
 		factureServiceImpl.assignOperateurToFacture(idOperateur,idFacture);
-	}
+	}*/
 	@Test
 	float pourcentageRecouvrement(Date startDate, Date endDate) {
 		Mockito.doReturn(f).when(factureRepository).findAll();
