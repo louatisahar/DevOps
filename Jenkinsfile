@@ -55,11 +55,26 @@ pipeline {
             }
         }
        
-	     stage ('TEST') {
+	     
+	     stage('Run app With DockerCompose') {
+              steps {
+                  sh "docker-compose -f docker-compose.yml up -d  "
+              }
+        }
+        stage('Sending email'){
+	           steps {
+		            mail bcc: '', body: '''Hello from Jenkins,
+		            Devops Pipeline returned success.
+		            Best Regards''', cc: '', from: '', replyTo: '', subject: 'Devops Pipeline', to: 'ghaith.belhadjsghaier@esprit.tn'
+	            }
+	       }
+	       
+	    stage ('TEST') {
 	             steps {
 	            sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
 	        	}
 	        }
+       
         }
 
     }
