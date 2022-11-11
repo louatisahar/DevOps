@@ -1,8 +1,9 @@
 package com.esprit.examen.services;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -16,8 +17,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.repositories.FactureRepository;
 @ExtendWith(MockitoExtension.class)
-public class FactureServiceImplMock {
+class FactureServiceImplMockito {
 
+	
 	@Mock
 	FactureRepository factureRepository;
 	@InjectMocks
@@ -36,35 +38,35 @@ public class FactureServiceImplMock {
 	};
 
 	@Test
-	List<Facture> retrieveAllFactures(){
+	void retrieveAllFactures(){
 		Mockito.doReturn(f).when(factureRepository).findAll();
 		List<Facture> fact = factureServiceImpl.retrieveAllFactures();
 		Assertions.assertNotNull(fact);
-		return f;
 	}
-	
-	@Test
-	List<Facture> getFacturesByFournisseur(Long idFournisseur){
+
+		
+	/*@Test
+	void getFacturesByFournisseur(Long idFournisseur){
 		Mockito.doReturn(f).when(factureRepository).findAll();
 		Facture fact = (Facture) factureServiceImpl.getFacturesByFournisseur(idFournisseur);
 		Assertions.assertNotNull(fact);
-		return (List<Facture>) fact;
-	}
+	}*/
+	
 	
 	@Test
-	Facture addFacture(Facture f) {
+	void addFacture() {
 	Facture fact= new Facture();
-	Mockito.when(factureRepository.save(Mockito.any(Facture.class))).thenReturn(f);
-	Facture facture = factureServiceImpl.addFacture(f);
+	Mockito.when(factureRepository.save(Mockito.any(Facture.class))).thenReturn(fact);
+	Facture facture = factureServiceImpl.addFacture(fact);
 	Assertions.assertNotNull(facture);
-	return fact ;
 	}
-	
+
 	/*@Test
 	void cancelFacture(Long id) {
 	//	Mockito.doReturn(id)
 		
 	}*/
+	/*
 	@Test
 	Facture retrieveFacture(Long id) {
 		Mockito.doReturn(f).when(factureRepository).findAll();
@@ -72,6 +74,7 @@ public class FactureServiceImplMock {
 		Assertions.assertNotNull(fact);
 		return fact;
 	}
+	*/
 	/*@Test
 	void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture f=new Facture();
@@ -79,11 +82,11 @@ public class FactureServiceImplMock {
 		Mockito.when(factureRepository.save(Mockito.any(Facture.class))).thenReturn(f);
 		factureServiceImpl.assignOperateurToFacture(idOperateur,idFacture);
 	}*/
-	@Test
+	
+	/*@Test
 	float pourcentageRecouvrement(Date startDate, Date endDate) {
 		Mockito.doReturn(f).when(factureRepository).findAll();
 		return 0 ;
 	}
-
-
+*/
 }
