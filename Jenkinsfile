@@ -64,16 +64,17 @@ pipeline {
 		            Best Regards''', cc: '', from: '', replyTo: '', subject: 'Devops Pipeline', to: 'bannour.ahmed@esprit.tn'
 	            }
 	       }
-	    stage('Run app With DockerCompose') {
-              steps {
-                  sh "sudo docker-compose -f docker-compose.yml up -d  "
-              }
+	   stage('Docker build')
+        {
+            steps {
+                 sh 'docker build --build-arg IP=0.0.0.0 -t louatisahar/devops  .'
+            }
         }
-	    stage ('TEST') {
-	             steps {
-	            sh 'mvn test -Dtest="SecteurActiviteServiceImplMock" '
-	        	}
-	        }
+        stage('Docker login')
+        {
+            steps {
+                sh 'echo $dockerhub_PSW | docker login -u ahmedbannour -p La9lou954414701.'
+            }    
        
         }
 
