@@ -64,8 +64,20 @@ pipeline {
 		            Best Regards''', cc: '', from: '', replyTo: '', subject: 'Devops Pipeline', to: 'bannour.ahmed@esprit.tn'
 	            }
 	       }
-	  
+	   stage('Docker build')
+        {
+            steps {
+                 sh 'docker build --build-arg IP=0.0.0.0 -t louatisahar/devops  .'
+            }
+        }
+        stage('Docker login')
+        {
+            steps {
+                sh 'echo $dockerhub_PSW | docker login -u ahmedbannour -p La9lou954414701.'
+            }    
+       
+        }
 
     }
-    
+    }
     
