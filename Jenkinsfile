@@ -53,5 +53,41 @@ pipeline {
                  sh 'docker build --build-arg IP=192.168.33.10 -t louatisahar/devops  .'
             }
         }
+        stage ('Docker login'){
+        	steps {
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        	}
+        }
+        
+        stage ('Docker push'){
+        	steps {
+        	sh 'docker push louatisahar/achatback:latest'
+        	}
+        }
+        
+        stage('Docker compose ') {
+              steps {
+                  sh "docker compose -f docker-compose.yml up -d  "
+              }
+        }
+        
+        stage("Send Email"){
+           steps{
+          	 emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'sahar.louati@esprit.tn'
+               emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+           }
+       }
+        
+     
+      }
+      
+      post {
+      	always {
+      		sh 'docker logout'
+      		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'sahar.louati@esprit.tn'
+          	emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+  		
+      	}
+      }
     }
 }
