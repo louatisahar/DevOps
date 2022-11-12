@@ -109,13 +109,7 @@ pipeline {
                   sh "docker compose -f docker-compose.yml up -d  "
               }
         }
-        stage('Docker login')
-        {
-            steps {
-                sh 'echo $dockerhub_PSW | docker login -u ahmedbannour -p dckr_pat_1gowK9KHnRIMqWpCQaxrOLR0br4 .'
-            }    
-       
-        }
+        
 
     }
     }
