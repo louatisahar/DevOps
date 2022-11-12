@@ -72,12 +72,6 @@ pipeline {
 		            Best Regards''', cc: '', from: 'ahmedla9lou9@gmail.com', replyTo: '', subject: 'Devops Pipeline', to: 'bannour.ahmed@esprit.tn'
 	            }
 	       }
-	    stage('Push') {
-
-			steps {
-				sh 'docker push louatisahar/devops'
-			}
-		}
         
        stage('Run app With DockerCompose') {
               steps {
