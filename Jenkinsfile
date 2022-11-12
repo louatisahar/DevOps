@@ -72,7 +72,7 @@ pipeline {
         
         stage("Docker Image") {
         steps{
-           sh ' docker build -t ahmedbannour/tpAchatProject-1.0:latest .'
+           sh ' docker build -t ahmedbannour/tpachatproject-1.0:latest .'
         }
         }
        
