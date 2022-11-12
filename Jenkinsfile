@@ -47,5 +47,10 @@ pipeline {
             sh 'mvn test -Dtest="ReglementServiceImpTest" '
             }
         }
+        stage ('Docker build') {
+             steps {
+            sh 'docker build -t louatisahar/achatback:latest .'
+            }
+        }
     }
 }
