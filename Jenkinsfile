@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent any    
+    environment {
+    		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+  	}
 
     stages {
        
@@ -79,12 +82,33 @@ pipeline {
 		            Best Regards''', cc: '', from: 'ahmedla9lou9@gmail.com', replyTo: '', subject: 'Devops Pipeline', to: 'bannour.ahmed@esprit.tn'
 	            }
 	       }
+        stage ('Docker build') {
+             steps {
+            sh 'docker build -t ahmedbannour/achatback:latest .'
+            }
+        }
+   
+         stage ('Docker login'){
+        	steps {
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        	}
+        }
         
-       stage('Run app With DockerCompose') {
+   
+        
+       
+        
+        stage ('Docker push'){
+        	steps {
+        	sh 'docker push ahmedbannour/achatback:latest'
+        	}
+        }
+        
+        stage('Docker compose ') {
               steps {
-                  sh "docker-compose -f docker-compose.yml up -d  "
+                  sh "docker compose -f docker-compose.yml up -d  "
               }
-          }
+        }
         stage('Docker login')
         {
             steps {
