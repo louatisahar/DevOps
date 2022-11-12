@@ -45,14 +45,6 @@ class FactureServiceImplMockito {
 		Assertions.assertNotNull(fact);
 	}
 
-		
-	/*@Test
-	void getFacturesByFournisseur(Long idFournisseur){
-		Mockito.doReturn(f).when(factureRepository).findAll();
-		Facture fact = (Facture) factureServiceImpl.getFacturesByFournisseur(idFournisseur);
-		Assertions.assertNotNull(fact);
-	}*/
-	
 	
 	@Test
 	void addFacture() {
@@ -97,4 +89,10 @@ class FactureServiceImplMockito {
 		return 0 ;
 	}
 */
+	/*@Test
+	void getFacturesByFournisseur(Long idFournisseur){
+		Mockito.doReturn(f).when(factureRepository).findAll();
+		Facture fact = (Facture) factureServiceImpl.getFacturesByFournisseur(idFournisseur);
+		Assertions.assertNotNull(fact);
+	}*/
 }
