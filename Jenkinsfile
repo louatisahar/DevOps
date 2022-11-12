@@ -72,16 +72,22 @@ pipeline {
 		            Best Regards''', cc: '', from: 'ahmedla9lou9@gmail.com', replyTo: '', subject: 'Devops Pipeline', to: 'bannour.ahmed@esprit.tn'
 	            }
 	       }
-	   stage('Docker build')
-        {
-            steps {
-                 sh 'docker build --build-arg IP=0.0.0.0 -t louatisahar/devops  .'
-            }
-        }
+	    stage('Push') {
+
+			steps {
+				sh 'docker push louatisahar/devops'
+			}
+		}
+        
+       stage('Run app With DockerCompose') {
+              steps {
+                  sh "docker-compose -f docker-compose.yml up -d  "
+              }
+          }
         stage('Docker login')
         {
             steps {
-                sh 'echo $dockerhub_PSW | docker login -u ahmedbannour -p La9lou954414701.'
+                sh 'echo $dockerhub_PSW | docker login -u ahmedbannour -p dckr_pat_1gowK9KHnRIMqWpCQaxrOLR0br4.'
             }    
        
         }
