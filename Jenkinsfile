@@ -50,7 +50,7 @@ pipeline {
         stage('Docker build')
         {
             steps {
-                 sh 'docker build --build-arg IP=192.168.33.10 -t louatisahar/devops  .'
+                 sh 'docker build -t louatisahar/devops  .'
             }
         }
         stage ('Docker login'){
