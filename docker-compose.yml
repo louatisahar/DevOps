@@ -34,4 +34,7 @@ services:
     tty: true
 
 volumes:
-  db:
+  nexus-data:
+  SonarQube_data:
+  SonarQube_extensions:
+  SonarQube_logs:

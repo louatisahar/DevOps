@@ -47,9 +47,10 @@ pipeline {
             sh 'mvn test -Dtest="ReglementServiceImpTest" '
             }
         }
-        stage ('Docker build') {
-             steps {
-            sh 'docker build -t louatisahar/achatback:latest .'
+        stage('Docker build')
+        {
+            steps {
+                 sh 'docker build --build-arg IP=192.168.33.10 -t louatisahar/devops  .'
             }
         }
     }
