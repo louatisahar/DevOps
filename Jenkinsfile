@@ -69,6 +69,12 @@ pipeline {
                  sh 'docker build --build-arg IP=197.3.0.172 -t louatisahar/devops  .'
             }
         }
+        
+        stage("Docker Image") {
+        steps{
+           sh ' docker build -t ahmedbannour/tpAchatProject-1.0:latest .'
+        }
+        }
        
 	     
 	   
