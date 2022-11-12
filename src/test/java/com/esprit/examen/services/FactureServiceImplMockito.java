@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -62,25 +63,32 @@ class FactureServiceImplMockito {
 	}
 
 	/*@Test
-	void cancelFacture(Long id) {
+	void cancelFacture() {
 	//	Mockito.doReturn(id)
-		
-	}*/
-	/*
-	@Test
-	Facture retrieveFacture(Long id) {
-		Mockito.doReturn(f).when(factureRepository).findAll();
-		Facture fact = factureServiceImpl.retrieveFacture(id);
-		Assertions.assertNotNull(fact);
-		return fact;
+		Mockito.when(factureRepository.save(Mockito.any(Facture.class))).thenReturn(facture);
+		facture.setArchivee(true);
+		//f=factureServiceImpl.cancelFacture((long)1);
+		Assertions.assertNotNull(factureServiceImpl.cancelFacture((long)1));
+		assertEquals(true, facture.getArchivee());
+
 	}
 	*/
 	/*@Test
-	void assignOperateurToFacture(Long idOperateur, Long idFacture) {
+	void retrieveFacture() {
+		Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(facture));
+		Facture fact = factureServiceImpl.retrieveFacture((long)2);
+		Assertions.assertNotNull(fact);	
+	}*/
+
+	/*@Test
+	void assignOperateurToFacture() {
 		Facture f=new Facture();
-		Mockito.doReturn(f).when(factureRepository).findAll();
+		//Mockito.doReturn(f).when(factureRepository).findAll();
 		Mockito.when(factureRepository.save(Mockito.any(Facture.class))).thenReturn(f);
-		factureServiceImpl.assignOperateurToFacture(idOperateur,idFacture);
+		factureServiceImpl.assignOperateurToFacture(null,null);
+		Assertions.assertNotNull(facture);
+
+	
 	}*/
 	
 	/*@Test
