@@ -1,5 +1,4 @@
-FROM maven:3.8.2-jdk-8
-RUN apt-get install curl
-RUN curl -u admin:admin -o tpAchatProject-1.0.jar "http://197.3.0.172:8081/repository/maven-releases/com/esprit/examen/tpAchatProject/1.0/tpAchatProject-1.0.jar" -L
-ENTRYPOINT ["java","-jar","/tpAchatProject-1.0.jar"]
-EXPOSE 8082
+FROM maven:3.8.2-jdk-11
+ADD target/tpachatproject-1.0.jar tpachatproject-1.0.jar
+EXPOSE 80
+ENTRYPOINT ["java", "-jar", "tpachatproject-1.0.jar"]
