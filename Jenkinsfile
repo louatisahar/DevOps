@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+ 	environment {
+    		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    		}
     stages {
        
         stage('Checkout GIT') {
@@ -85,12 +87,10 @@ pipeline {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
           }
-        stage('Docker login')
-        {
-            steps {
-                sh 'echo $dockerhub_PSW | docker login -u ahmedbannour -p dckr_pat_5ZhcaFrQPGyzdlrDOxtpWxU2saQ .'
-            }    
-       
+        stage ('Docker login'){
+        	steps {
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        	}
         }
 
     }
