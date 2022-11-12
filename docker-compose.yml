@@ -6,25 +6,9 @@ services:
   - "8081:8081"
   volumes:
   - 'nexus-data:/nexus-data'
- prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - /etc/prometheus:/etc/prometheus
-    restart: unless-stopped
-    command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
- grafana:
-    image: grafana/grafana-oss:latest
-    container_name: grafana
-    ports:
-      - "3000:3000"
-    restart: unless-stopped
 volumes:
   nexus-data:
   SonarQube_data:
   SonarQube_extensions:
   SonarQube_logs:
- 
+  
