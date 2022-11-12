@@ -12,6 +12,14 @@ pipeline {
             }
         }
 
+		stage('database connection') {
+            steps{
+                sh '''
+                sudo docker stop mysql || true
+                sudo docker restart mysql || true
+                '''
+            }
+        }
         stage('Cleaning the project') {
              
              
