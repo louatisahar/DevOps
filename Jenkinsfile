@@ -61,15 +61,24 @@ pipeline {
            //}
         //}
         
+        
+        
       
         stage("Docker Image") {
-        steps{
-           sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
+        	steps{
+           		sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
+        	}
         }
+        stage ('Docker login'){
+        	steps {
+					sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'        
+				}
         }
-       
-	     
-	   
+	   stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject'
+                }
+        }
         stage('Sending email'){
 	           steps {
 		            mail bcc: '', body: '''Hello from Jenkins,
@@ -83,11 +92,7 @@ pipeline {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
           }
-        stage ('Docker login'){
-        	steps {
-        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        	}
-        }
+      
 
     }
     }
