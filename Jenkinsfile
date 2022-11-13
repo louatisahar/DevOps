@@ -50,7 +50,7 @@ pipeline {
         stage('Docker build')
         {
             steps {
-                 sh 'docker build -t louatisahar/devops  .'
+                 sh 'docker build -t louatisahar/devops:latest .'
             }
         }
        
