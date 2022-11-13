@@ -1,7 +1,7 @@
 version: "3"
 services:
   spring-tpachatproject:
-    image: louatisahar/achatback
+    image: louatisahar/devops
     ports:
       - "8089:8089"
     networks:
