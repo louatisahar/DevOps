@@ -16,7 +16,7 @@ services:
   mysqldb:
     image: mysql:8
     volumes:
-      -  /home/mysql/khaleddata:/var/lib/mysql:rw
+      -  /home/mysql/sahardata:/var/lib/mysql:rw
     networks:
       - net-mysql
     environment:

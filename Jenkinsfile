@@ -55,6 +55,24 @@ pipeline {
                  sh 'docker build -t louatisahar/devops:latest .'
             }
         }
+        
+        stage ('Docker login'){
+        	steps {
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        	}
+        }
+        
+        stage ('Docker push'){
+        	steps {
+        	sh 'docker push louatisahar/devops:latest'
+        	}
+        }
+        
+        stage('Docker compose ') {
+              steps {
+                  sh "docker compose -f docker-compose.yml up -d  "
+              }
+        }
        
     }
 }
