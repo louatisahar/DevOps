@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+	environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerHub')
+    }
     stages {
        
         stage('Checkout GIT') {
@@ -76,7 +78,7 @@ pipeline {
         }
 	   stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject'
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
                 }
         }
         stage('Sending email'){
