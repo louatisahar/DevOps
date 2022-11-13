@@ -55,12 +55,7 @@ pipeline {
                  sh 'docker build -t louatisahar/devops:latest .'
             }
         }
-        
-        steps {
-      sh "docker-compose build --build-arg DISCORD_TOKEN='$DISCORD_TOKEN' --build-arg APPLICATION_ID='$APPLICATION_ID' --detach --verbose"
-      sh "docker-compose up -d"
- 			}
- 
+         
         stage ('Docker login'){
         	steps {
         	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
