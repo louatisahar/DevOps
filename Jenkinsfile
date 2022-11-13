@@ -76,7 +76,7 @@ pipeline {
       
         stage("Docker Image") {
         	steps{
-           		sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpAchatProject-1.0:latest .'
+           		sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
         	}
         }
         stage ('Docker login'){
@@ -86,7 +86,7 @@ pipeline {
         }
 	   stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpAchatProject-1.0:latest'
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
                 }
         }
         stage('Sending email'){
