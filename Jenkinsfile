@@ -38,35 +38,33 @@ pipeline {
             }
         }
        
-         stage('Nexus') {
+         //stage('Nexus') {
              
              
-            steps {
-                script {
+            //steps {
+                //script {
 
-                        sh 'mvn deploy'
-				}
+                        //sh 'mvn deploy'
+				//}
                
-            }
-        } 
+            //}
+        //} 
+          
+        //stage('Code Quality Check via SonarQube') {
              
-        stage('Code Quality Check via SonarQube') {
-             
-             
-            steps {
+            //steps {
                
-                script {
-
-                        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=ahmed'
-}
+                //script {
+					//sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=ahmed'
+//}
                
-            }
-        }
+           //}
+        //}
         
       
         stage("Docker Image") {
         steps{
-           sh ' docker build -t louatisahar/tpachatproject-1.0:latest .'
+           sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
         }
         }
        
