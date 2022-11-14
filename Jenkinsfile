@@ -52,7 +52,7 @@ pipeline {
         stage('Docker build')
         {
             steps {
-                 sh ' sudo docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
+                 sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
             }
         }
          stage('Docker compose ') {
