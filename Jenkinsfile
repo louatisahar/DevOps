@@ -56,16 +56,17 @@ pipeline {
                  sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
             }
         }
+         stage ('Docker login'){
+        	steps {
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+        	}
+        }
          stage('Docker compose ') {
               steps {
                   sh "docker compose -f docker-compose.yml up -d  "
               }
         }
-        stage ('Docker login'){
-        	steps {
-        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
-        	}
-        }
+       
         
         stage ('Docker push'){
         	steps {
