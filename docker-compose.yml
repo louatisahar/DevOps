@@ -16,7 +16,7 @@ services:
       - /var/lib/mysql
 
   spring_app:
-    image: louatisahar/tpachatproject
+    image: louatisahar/devops
     container_name: devops
     restart: on-failure
     environment:
