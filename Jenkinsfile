@@ -30,6 +30,11 @@ pipeline {
                
             }
         } 
+        stage('Nexus') {
+            steps {
+                sh 'mvn deploy'
+            }
+        }  
         stage('Code Quality Check via SonarQube') {
             steps {
                 script {
@@ -38,11 +43,7 @@ pipeline {
                
             }
         }
-        stage('Nexus') {
-            steps {
-                sh 'mvn deploy'
-            }
-        }     
+           
      stage ('Mockito/Junit') {
              steps {
             sh 'mvn test -Dtest="FactureServiceImplMockito" '
