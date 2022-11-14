@@ -95,6 +95,12 @@ pipeline {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
           }
+          
+          stage ('Mockito/Junit') {
+             steps {
+            sh 'mvn test -Dtest="ProduitTest" '
+            }
+        }
       
 
     }
