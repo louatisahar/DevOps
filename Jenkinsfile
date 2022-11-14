@@ -101,7 +101,14 @@ pipeline {
             sh 'mvn test -Dtest="ProduitTest" '
             }
         }
-      
+      post {
+      	always {
+      		sh 'docker logout'
+      		emailext attachLog: true, body: "${env.BUILD_URL} has result ${currentBuild.result}", compressLog: true, subject: "Status of pipeline: ${currentBuild.fullDisplayName}", to: 'ahmedla9lou9@gmail.com'
+          	emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+  		
+      	}
+      }
 
     }
     }
