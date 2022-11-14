@@ -17,7 +17,7 @@ services:
 
   spring_app:
     image: louatisahar/tpachatproject
-    container_name: achatback
+    container_name: devops
     restart: on-failure
     environment:
       - spring.datasource.url=jdbc:mysql://mysqldb:3306/tpachato?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
