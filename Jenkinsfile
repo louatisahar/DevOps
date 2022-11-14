@@ -41,28 +41,28 @@ pipeline {
      
          }
        
-         //stage('Nexus') {
+         stage('Nexus') {
              
              
-            //steps {
-                //script {
+            steps {
+                script {
 
-                        //sh 'mvn deploy'
-				//}
+                        sh 'mvn deploy'
+				}
                
-            //}
-        //} 
+            }
+        } 
           
-        //stage('Code Quality Check via SonarQube') {
+        stage('Code Quality Check via SonarQube') {
              
-            //steps {
+            steps {
                
-                //script {
-					//sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=ahmed'
-//}
+                script {
+					sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=ahmed'
+					}
                
-           //}
-        //}
+           }
+        }
         
         
         
