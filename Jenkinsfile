@@ -52,7 +52,7 @@ pipeline {
         stage('Docker build')
         {
             steps {
-                 sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject:latest .'
+                 sh ' docker build -t $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest .'
             }
         }
          stage('Docker compose ') {
@@ -62,13 +62,13 @@ pipeline {
         }
         stage ('Docker login'){
         	steps {
-        	sh 'docker login -u louatisahar -p 203JFT3350'
+        	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
         	}
         }
         
         stage ('Docker push'){
         	steps {
-        	sh 'docker push louatisahar/devops:latest'
+        	sh 'docker push $DOCKERHUB_CREDENTIALS_USR/tpachatproject-1.0:latest'
         	}
         }
         
