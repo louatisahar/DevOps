@@ -74,7 +74,13 @@ pipeline {
         	}
         }
         
-        
+        stage('mailling'){
+	           steps {
+		            mail bcc: '', body: '''Hello from Jenkins,
+		            Devops Pipeline returned success.
+		            Best Regards''', cc: '', from: 'louatisahar23@gamil.com', replyTo: '', subject: 'Devops Pipeline', to: 'sahar.louati@esprit.tn'
+	            }
+	       }
        
     }
     post {
