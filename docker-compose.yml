@@ -25,7 +25,7 @@ services:
             "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect"
           }'
   app_achat_front :
-    image : louatisahar/angularfront
+    image : louatisahar/angularfront:latest
     ports:
       - 80:80
     depends_on :
