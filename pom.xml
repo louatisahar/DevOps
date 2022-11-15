@@ -11,7 +11,7 @@
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>tpachatproject</artifactId>
 	<version>1.0</version>
-	<name>tpAchatProject</name>
+	<name>tpachatproject</name>
 	<description>tpAchatProject</description>
 	<properties>
 		<java.version>1.8</java.version>
