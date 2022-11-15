@@ -1,11 +1,1 @@
-version: "3"
 
-services:
-
-  app:
-
-    image: khaledkhm/achatfront:latest
-    container_name: angular_container
-    restart: on-failure
-    ports:
-      - 4200:80
